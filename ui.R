@@ -6,23 +6,27 @@
 #
 
 library(shiny)
+library(ggvis)
 
-shinyUI(pageWithSidebar(
-  
-  # Application title
-  headerPanel("Old Faithful Geyser Data"),
-  
-  # Sidebar with a slider input for number of bins
-  sidebarPanel(
-    sliderInput("bins",
-                "Number of bins:",
-                min = 1,
-                max = 50,
-                value = 30)
-  ),
-  
-  # Show a plot of the generated distribution
-  mainPanel(
-    plotOutput("distPlot")
+shinyUI(fluidPage(
+                   
+# Application title
+titlePanel("November Meetup 2015"),    
+
+    # Show the generated plot
+    mainPanel(
+      tabsetPanel(
+        tabPanel("Graph", 
+                 sliderInput("year", "Year released", 1893, 2005, value = c(1893)),
+                 plotOutput('plot1')
+                 ),
+        
+        
+        tabPanel("Table", tableOutput("table1"))
+        
+      ))
   )
-))
+  
+  
+  
+)
