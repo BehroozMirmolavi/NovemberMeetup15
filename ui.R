@@ -6,7 +6,7 @@
 #
 
 library(shiny)
-library(ggvis)
+library(ggplot2)
 
 shinyUI(fluidPage(
                    
@@ -17,12 +17,12 @@ titlePanel("November Meetup 2015"),
     mainPanel(
       tabsetPanel(
         tabPanel("Graph", 
-                 sliderInput("year", "Year released", 1893, 2005, value = c(1893)),
+                 sliderInput("decade", "Decade released", 1890, 2000,step = 10, value = c(1890),sep = "",animate = T),
                  plotOutput('plot1')
                  ),
         
         
-        tabPanel("Table", tableOutput("table1"))
+        tabPanel("Table", dataTableOutput("table1"))
         
       ))
   )
